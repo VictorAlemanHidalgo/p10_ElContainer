@@ -1,43 +1,58 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(const MiContenedorApp());
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-  // This widget is the root of your application.
+class MiContenedorApp extends StatelessWidget {
+  const MiContenedorApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      // Application name
-      title: 'Flutter Hello World',
-      // Application theme data, you can set the colors for the application as
-      // you want
-      theme: ThemeData(
-        // useMaterial3: false,
-        primarySwatch: Colors.blue,
-      ),
-      // A widget which will be started on application startup
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
-    );
-  }
-}
-
-class MyHomePage extends StatelessWidget {
-  final String title;
-  const MyHomePage({super.key, required this.title});  
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        // The title text which will be shown on the action bar
-        title: Text(title),
-      ),
-      body: Center(
-        child: Text(
-          'Hello, World!',
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text("Alemán Container"),
+          centerTitle: true,
+          titleTextStyle: const TextStyle(color: Colors.white, fontSize: 30),
+          backgroundColor: const Color(0xff0f844d),
+        ),
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              // Primer contenedor
+              Container(
+                width: 200,
+                height: 100,
+                decoration: BoxDecoration(
+                  color: Colors.blue, // Color de fondo
+                  borderRadius:
+                      BorderRadius.circular(30), // Esquinas redondeadas
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.pinkAccent
+                          .withOpacity(0.5), // Color de la sombra
+                      spreadRadius: 5, // Extensión de la sombra
+                      blurRadius: 7, // Difuminado de la sombra
+                      offset: const Offset(0, 3), // Desplazamiento de la sombra
+                    ),
+                  ],
+                ),
+                child: const Center(
+                  child: Text(
+                    'Contenedor 1',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 18,
+                    ),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 20), // Espacio entre los contenedores
+            ],
+          ),
         ),
       ),
     );
-  }
-}
+  } // Fin widgets
+} // Fin clase MiContenedorApp
